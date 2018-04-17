@@ -49,33 +49,26 @@ var vm = new Vue({
 ```
 
 ```
-<script src="../js/vue.js"></script>
-
-<body>
-	<div id="app">
-		<my-component title="组件" content="组件内容"></my-component>
-	</div>
-</body>
-
-<script>
-    var MyComponent = Vue.component('my-component', {
-        props:['title', 'content'],
-        data:function(){
-            return {
-                desc:'123'
-            }
-        },
-        template:'<div>\
-            <h1>{{title}}</h1>\
-            <h1>{{content}}</h1>\
-            <h1>{{desc}}</h1>\
-            </div>'
-    })
-    var vm = new Vue({
-        el: '#app',
-        component:'MyComponent'
-    })
-</script>
+<div id="app">
+    <my-component title="组件" content="组件内容"></my-component>
+</div>
+var MyComponent = Vue.component('my-component', {
+    props:['title', 'content'],
+    data:function(){
+        return {
+            desc:'123'
+        }
+    },
+    template:'<div>\
+        <h1>{{title}}</h1>\
+        <h1>{{content}}</h1>\
+        <h1>{{desc}}</h1>\
+        </div>'
+})
+var vm = new Vue({
+    el: '#app',
+    component:'MyComponent'
+})
 ```
 
 #### 2.1.3 方法
