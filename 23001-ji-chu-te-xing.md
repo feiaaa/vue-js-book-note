@@ -7,26 +7,7 @@
 * Vue.js实例必须只有一个根div，即组件模板的内容必须封装在一个div里面。
 
 ```javascript
-<script src="../js/vue.js"></script>
 
-<div id="app">
-    <!-- 内容会被模板覆盖 -->
-    <p>123</p>
-</div>
-
-<script id="tp1" type="x-template">
-    <div>
-        <p>模板</p>
-    </div>
-</script>
-
-<script>
-/* 模板 将#tp1模板覆盖并放到div#app里面*/
-    var mvm = new Vue({
-        el: '#app',
-        template:'#tp1'
-    })
-</script>
 ```
 
 #### 2.1.2 数据
