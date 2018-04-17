@@ -36,23 +36,16 @@ var mvm = new Vue({
 
 ```
 <!-- 会报错,b需要在new Vue()之前实例化 -->
-<script src="../js/vue.js"></script>
-
-<body>
-	<div id="app">
-		<p>{{a}}</p>
-		<p>{{b}}</p>
-	</div>
-</body>
-
-<script>
-    var vm = new Vue({
-        el: '#app',
-        data:{
-            a: 1
-        }
-    })
-</script>   
+<div id="app">
+    <p>{{a}}</p>
+    <p>{{b}}</p>
+</div>
+var vm = new Vue({
+    el: '#app',
+    data:{
+        a: 1
+    }
+})  
 ```
 
 ```
