@@ -8,4 +8,5 @@
 * [5、过渡](53001-guo-du.md)
 * [6、组件](63001-zu-jian.md)
 * [7、Vue.js常用插件](7vuejschang-yong-cha-jian.md)
+* [8、安装及目录结构](83001-an-zhuang-ji-mu-lu-jie-gou.md)
 
