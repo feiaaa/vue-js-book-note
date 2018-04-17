@@ -6,7 +6,7 @@
 
 * Vue.js实例必须只有一个根div，即组件模板的内容必须封装在一个div里面。
 
-```markdown
+```javascript
 <script src="../js/vue.js"></script>
 
 <div id="app">
