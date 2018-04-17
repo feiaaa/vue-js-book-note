@@ -10,4 +10,5 @@
 * [7、Vue.js常用插件](7vuejschang-yong-cha-jian.md)
 * [8、安装及目录结构](83001-an-zhuang-ji-mu-lu-jie-gou.md)
 * [附录：Vux移动端](fu-luff1a-vux-yi-dong-duan.md)
+* [附录：Vuetify桌面端](fu-luff1a-vuetify-zhuo-mian-duan.md)
 
