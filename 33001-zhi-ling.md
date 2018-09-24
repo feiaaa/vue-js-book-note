@@ -6,6 +6,27 @@
 
 `<div v-for="item in items" v-bind:key="item.id"></div>`
 
+#### 3.1.1 v-bind的三种修饰符
+.once ：【2.0废除】用于组件 props 属性，但进行的是单次绑定。（将绑定数据传递给子组件后，子组件单独维护这份数据，和父组件的数据
+再无关系，父组件的数据发生变化也不会影响子组件中的数据。）
+```
+<my-child :parent.once='parent'></my-child>
+```
+.sync ：【2.0废除】用于组件 props 属性，进行双向绑定，即父组件绑定传递给子组件的值，无论在哪个组件中对其进行了修改，其他组件中的这个值也会随之更新。
+```
+<my-child :parent.sync='parent'></my-child>。
+```
+.camel ：将绑定的特性名字转回驼峰命名（HTML 属性不区分大小写）。只能用于普通 HTML 属性的绑定，通常会用于svg 标签下的属性 
+```
+<svg width='400' height='300' :view-box.camel='viewBox'></svg>
+
+```
+输出结果即为
+```
+ <svg width="400" height="300" viewBox="….."></svg>
+```
+在2.0情况下，只能单向传值，如果子要改父，靠事件机制。
+
 ### 3.2 自定义基础指令
 
 #### 3.2.1 指令的注册
@@ -107,7 +128,13 @@ Vue.component('comp', Comp)
 
 #### 3.3.2 deep
 
-#### 3.3.3 twoWay
+#### 3.3.3 twoWay 【vue2被废弃】
+在自定义指令中，如果需要向 Vue 实例写回数据，就需要在定义对象中使用 twoWay:true，
+这样可以在指令中使用 this.set(value) 来写回数据
+
+[如何在Vue2中实现组件props双向绑定](https://www.cnblogs.com/xxcanghai/p/6124699.html)
+Vue 2.x相比较Vue 1.x而言，升级变化除了实现了Virtual-Dom以外，给使用者最大不适就是移除的组件的props的双向绑定功能。
+以往在Vue1.x中利用props的twoWay和.sync绑定修饰符就可以实现props的双向绑定功能，但是在Vue2中彻底废弃了此功能，如果需要双向绑定需要自己来实现。
 
 #### 3.3.4 acceptStatement
 
