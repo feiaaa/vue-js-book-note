@@ -84,4 +84,58 @@ export default{
 
 >  数据请求
 
-现在一般不使用，改用axios [https://www.kancloud.cn/yunye/axios/234845](https://www.kancloud.cn/yunye/axios/234845)
+- 引用: npm install或者script
+- 使用：
+```
+var List = Vue.extend({
+route : {
+　　// vue-router 中的 data 钩子函数，
+　　data : function(transition) {
+　　　// 运行这段代码需要在服务器环境中，即 localhost 下，直接访问文件运行这段代码会抛出异常
+　　　this.$http
+　　　　　.get('/api/list?pageNo=' +  + transition.to.params.page);
+　　　　　.then(function(rep){
+　　　　　　 // 成功回调函数
+　　　　　　 transition.next({
+　　　　　　　 list : rep.data
+　　　　　　 });
+　　　　　}, function(rep) {
+　　　　　　 // 失败回调函数
+　　　　　　 transition.next({
+　　　　　　　 data : rep.data
+　　　　　　 });
+　　　　　});
+　　　}
+},
+template: '<h1>This is the list page</h1>'
+})
+```
+> 选项参数
+```
+this.$http({
+ url : '/api/list', // url 访问路径
+ method : '',　　 // HTTP 请求方法，例如 GET,POST,PUT,DELETE 等
+ body : {},　　　// request 中的 body 数据，值可以为对象，String 类型 , 也可以是
+FormData 对象 
+params : {}，　 // get 方法时 url 上的参数，例如 /api/list?page=1
+ headers: {},　　 // 可以设置 request 的 header 属性
+ timeout : 1500, // 请求超时时长，单位为毫秒，如果设置为 0 的话则没有超时时长
+ before : function(request) {}, // 请求发出前调用的函数，可以在此对 request进行修改
+
+```
+- Vue-resource 提供了一种与 RESTful API 风格所匹配的写法，通过全局变量 Vue.resource 或者组件实例中的 this.$resource 对某个符合 RESTful 格式的 url 进行封装，使得
+开发者能够直接使用增删改查等基础操作，而不用自己再额外编写接口。
+> Vue-resource 提供了 6 个默认动作行为，分别为：
+```
+get: {method: 'GET'},
+save: {method: 'POST'},
+query: {method: 'GET'},
+update: {method: 'PUT'},
+remove: {method: 'DELETE'},
+delete: {method: 'DELETE'}
+```
+
+- 封装service
+> 在编写 SPA 应用中，我们通常会把和后端做数据交互的方法封装成一个 Service 模块，供不同的组件进行使用。我们可以新建一个文件夹 api，将 Service 模块集中起来，并按资源进行分类。
+
+现在改用axios [https://www.kancloud.cn/yunye/axios/234845](https://www.kancloud.cn/yunye/axios/234845)
